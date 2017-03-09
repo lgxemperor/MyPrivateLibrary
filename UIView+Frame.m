@@ -143,7 +143,7 @@
     UILabel *label=[[UILabel alloc] init];
     label.frame=frame;
     CGSize rmSize = CGSizeMake(MAXFLOAT,CGRectGetHeight(frame)-6);  //上限
-    CGSize rSize = [txt sizeWithFont:font constrainedToSize:rmSize lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize rSize = [txt boundingRectWithSize:rmSize options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:font} context:nil].size;
     label.width=rSize.width+4;
     label.backgroundColor=[UIColor clearColor];
     label.textAlignment=NSTextAlignmentCenter;
@@ -170,7 +170,7 @@
     UILabel *label=[[UILabel alloc] init];
     label.frame=frame;
     CGSize rmSize = CGSizeMake(CGRectGetWidth(frame)-6,MAXFLOAT);  //上限
-    CGSize rSize = [txt sizeWithFont:font constrainedToSize:rmSize lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize rSize = [txt boundingRectWithSize:rmSize options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:font} context:nil].size;
     if (CGRectGetHeight(frame)<rSize.height) {
         label.height=rSize.height;
     }
@@ -187,21 +187,13 @@
 -(CGSize)labelSize:(CGRect)frame Text:(NSString *)txt Font:(UIFont *)font{
     CGSize rmSize = CGSizeMake(MAXFLOAT,CGRectGetHeight(frame)-6);  //上限
     CGSize rSize = frame.size;
-    if (IOS_VERSION<7.0) {
-        rSize =[txt sizeWithFont:font constrainedToSize:rmSize lineBreakMode:NSLineBreakByWordWrapping];
-    }else{
-        rSize =[txt boundingRectWithSize:rmSize options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:font} context:nil].size;
-    }
+    rSize =[txt boundingRectWithSize:rmSize options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:font} context:nil].size;
     return rSize;
 }
 -(CGSize)labelHeight:(CGRect)frame Text:(NSString *)txt Font:(UIFont *)font{
     CGSize rmSize = CGSizeMake(CGRectGetWidth(frame)-6,MAXFLOAT);  //上限
     CGSize rSize = frame.size;
-    if (IOS_VERSION<7.0) {
-        rSize =[txt sizeWithFont:font constrainedToSize:rmSize lineBreakMode:NSLineBreakByWordWrapping];
-    }else{
-        rSize =[txt boundingRectWithSize:rmSize options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:font} context:nil].size;
-    }
+    rSize =[txt boundingRectWithSize:rmSize options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:font} context:nil].size;
     return rSize;
 }
 -(UIView *)customViewWithFrame:(CGRect)frame{
@@ -320,14 +312,14 @@
 -(void)popToViewController:(NSString *)className animated:(BOOL)animated{
     NSMutableArray *vcs=[NSMutableArray arrayWithArray:self.navigationController.viewControllers];
     int idx=0;
-    for (int i=0; i<vcs.count; i++) {
+    for (long i=0; i<vcs.count; i++) {
         UIViewController *vc = [vcs objectAtIndex:i];
         if ([vc isKindOfClass:NSClassFromString(className)]) {
             idx=i;
             break;
         }
     }
-    for (int i=vcs.count-1; i>idx; i--) {
+    for (long i=vcs.count-1; i>idx; i--) {
         [vcs removeObjectAtIndex:i];
     }
     [self.navigationController setViewControllers:vcs animated:animated];
@@ -335,14 +327,14 @@
 -(void)pushViewController:(UIViewController *)viewController From:(NSString *)className animated:(BOOL)animated{
     NSMutableArray *vcs=[NSMutableArray arrayWithArray:self.navigationController.viewControllers];
     int idx=0;
-    for (int i=0; i<vcs.count; i++) {
+    for (long i=0; i<vcs.count; i++) {
         UIViewController *vc = [vcs objectAtIndex:i];
         if ([vc isKindOfClass:NSClassFromString(className)]) {
             idx=i;
             break;
         }
     }
-    for (int i=vcs.count-1; i>idx; i--) {
+    for (long i=vcs.count-1; i>idx; i--) {
         [vcs removeObjectAtIndex:i];
     }
     [vcs addObject:viewController];

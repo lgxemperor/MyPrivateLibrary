@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MyPrivateLibrary.h"
 @class SlideToolBarView;
 @protocol SlideToolBarViewDelegate <NSObject>
 -(void)slideToolBarView:(SlideToolBarView *)slideToolBarView SelectedAtIndex:(NSInteger)sIndex;

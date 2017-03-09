@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
-#define IOS7 [[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0
+#import "MyPrivateLibrary.h"
 @interface LGXAppUtil : NSObject
 +(CGFloat)statusBarHeight;
 +(CGFloat)navigationBarHeight;

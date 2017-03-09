@@ -12,5 +12,5 @@
 ///设定高度，根据宽高比例计算Size
 -(CGSize)resizeImageHeight:(CGFloat)imageHeight;
 + (UIImage *)originImage:(UIImage *)image scaleToSize:(CGSize)size ;
-- (UIImage *)cutCircleImage;
+//- (UIImage *)cutCircleImage;
 @end

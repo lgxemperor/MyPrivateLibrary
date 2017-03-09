@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MyPrivateLibrary.h"
 @interface SlideToucheView : UIControl{
     
 }
