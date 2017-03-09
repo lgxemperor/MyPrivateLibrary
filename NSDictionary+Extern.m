@@ -308,7 +308,7 @@
             NSInteger monthDays=[NSDate dayFromMonth:cMonth WithYear:cYear];
             cDay=monthDays+cDay-1;
         }
-        [wArray addObject:[NSString stringWithFormat:@"%02ld-%02ld",cMonth,cDay]];
+        [wArray addObject:[NSString stringWithFormat:@"%02ld-%02ld",(long)cMonth,(long)cDay]];
     }
     return wArray;
 }
