@@ -13,7 +13,7 @@
     return 20.0f;
 }
 +(CGFloat)tabBarHeight{
-    if (IOS7) {
+    if ([[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0) {
         return 49.0f;
     }else{
         return 44.0f;
@@ -36,7 +36,7 @@
 }
 +(CGFloat)mainFrameHeight{
     CGRect keyFrame=[[UIScreen mainScreen] bounds];
-    if (IOS7) {
+    if ([[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0) {
         return CGRectGetHeight(keyFrame);
     }else{
         return CGRectGetHeight(keyFrame)-20.0f;
