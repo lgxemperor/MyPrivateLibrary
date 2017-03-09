@@ -12,7 +12,7 @@
 
 +(NSString *)imageToStr:(UIImage *)image{
     NSData *data = UIImageJPEGRepresentation(image, 0.5);
-    return [data base64Encoding];
+    return [data base64EncodedStringWithOptions:0];
 }
 
 +(UIImage *)imageFromView:(UIView *)view

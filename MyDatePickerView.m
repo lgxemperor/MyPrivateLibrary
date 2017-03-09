@@ -56,6 +56,7 @@ typedef void(^CompleteBolck) (NSDictionary *);
 }
 
 -(void)awakeFromNib{
+    [super awakeFromNib];
     _pickerView.dataSource = self;
     _pickerView.delegate = self;
 }
