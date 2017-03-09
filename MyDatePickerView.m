@@ -15,7 +15,7 @@
 
 
 #define COLOR(R, G, B, A) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:A]  
-
+#define SCREENSIZE [UIScreen mainScreen].bounds.size
 typedef void(^CompleteBolck) (NSDictionary *);
 
 @interface MyDatePickerView ()<UIPickerViewDataSource, UIPickerViewDelegate>
