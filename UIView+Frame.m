@@ -312,14 +312,14 @@
 -(void)popToViewController:(NSString *)className animated:(BOOL)animated{
     NSMutableArray *vcs=[NSMutableArray arrayWithArray:self.navigationController.viewControllers];
     int idx=0;
-    for (long i=0; i<vcs.count; i++) {
+    for (NSInteger i=0; i<vcs.count; i++) {
         UIViewController *vc = [vcs objectAtIndex:i];
         if ([vc isKindOfClass:NSClassFromString(className)]) {
             idx=i;
             break;
         }
     }
-    for (long i=vcs.count-1; i>idx; i--) {
+    for (NSInteger i=vcs.count-1; i>idx; i--) {
         [vcs removeObjectAtIndex:i];
     }
     [self.navigationController setViewControllers:vcs animated:animated];
@@ -327,14 +327,14 @@
 -(void)pushViewController:(UIViewController *)viewController From:(NSString *)className animated:(BOOL)animated{
     NSMutableArray *vcs=[NSMutableArray arrayWithArray:self.navigationController.viewControllers];
     int idx=0;
-    for (long i=0; i<vcs.count; i++) {
+    for (NSInteger i=0; i<vcs.count; i++) {
         UIViewController *vc = [vcs objectAtIndex:i];
         if ([vc isKindOfClass:NSClassFromString(className)]) {
             idx=i;
             break;
         }
     }
-    for (long i=vcs.count-1; i>idx; i--) {
+    for (NSInteger i=vcs.count-1; i>idx; i--) {
         [vcs removeObjectAtIndex:i];
     }
     [vcs addObject:viewController];
