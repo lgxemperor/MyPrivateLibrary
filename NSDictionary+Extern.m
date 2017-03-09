@@ -253,7 +253,7 @@
     NSCalendar*calendar = [[NSLocale currentLocale] objectForKey:NSLocaleCalendar];
     NSDateComponents*comps;
     
-    comps =[calendar components:(NSWeekCalendarUnit | NSWeekdayCalendarUnit |NSWeekdayOrdinalCalendarUnit)
+    comps =[calendar components:( NSCalendarUnitWeekday |NSCalendarUnitWeekdayOrdinal)
                        fromDate:self];
     NSInteger weekday = [comps weekday]; // 星期几（注意，周日是“1”，周一是“2”。。。。）
     NSString *week = @"";
