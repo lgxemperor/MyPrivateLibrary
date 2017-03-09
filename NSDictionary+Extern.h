@@ -17,7 +17,6 @@
 
 - (id)checkedObjectForKey:(id)key;
 - (id)getObjectForKey:(id)key ;
--(NSDictionary *)configRequestParamWithIsEncrypt:(BOOL)isEncrypt;
 @end
 
 @interface NSDate (Addition)

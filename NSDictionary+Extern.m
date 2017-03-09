@@ -152,58 +152,6 @@
     
     return dValue;//非数组，字典类型返回字符串
 }
--(NSDictionary *)configRequestParamWithIsEncrypt:(BOOL)isEncrypt{
-    NSMutableDictionary *mDict=[NSMutableDictionary dictionaryWithDictionary:self];
-    NSMutableString *c_req_param=[[NSMutableString alloc] init];
-    if (isEncrypt) {
-        [mDict setObject:[[NSDate currentTimeStamp] lowercaseString] forKey:@"timestamp"];
-        [mDict setObject:WEBAPPSECRET forKey:@"appsecret"];
-        NSArray *allKeys=[mDict allKeys];
-        allKeys=[allKeys sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-            NSString *key1=(NSString *)obj1;
-            NSString *key2=(NSString *)obj2;
-            return [[key1 lowercaseString] compare:[key2 lowercaseString]];
-        }];
-        for(NSString *key in allKeys){
-            NSString *value=[mDict objectForKey:key];
-            if(value.length==0){
-                [mDict removeObjectForKey:key];
-                [mDict setObject:@"" forKey:[key lowercaseString]];
-                continue;
-            }
-            if (c_req_param.length==0) {
-                [c_req_param appendFormat:@"%@",[key lowercaseString]];
-                [c_req_param appendFormat:@"="];
-                [c_req_param appendFormat:@"%@",[value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-                [mDict removeObjectForKey:key];
-                [mDict setObject:value forKey:[key lowercaseString]];
-            }else{
-                [c_req_param appendFormat:@"&"];
-                [c_req_param appendFormat:@"%@",[key lowercaseString]];
-                [c_req_param appendFormat:@"="];
-                [c_req_param appendFormat:@"%@",[value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-                [mDict removeObjectForKey:key];
-                [mDict setObject:value forKey:[key lowercaseString]];
-            }
-        }
-//        NSString *tempStr=[NSString stringWithFormat:@"%@&appsecret=%@",c_req_param,WEBAPPSECRET];
-        NSLog(@"tempStr=  %@",c_req_param);
-        NSString *md5Str=[c_req_param MD5];
-//        NSLog(@"md5Str=%@",md5Str);
-        [mDict setObject:[md5Str lowercaseString] forKey:@"sign"];
-        [mDict removeObjectForKey:@"appsecret"];
-        [mDict setObject:WEBAPPKEY forKey:@"appkey"];
-
-        
-    }else{
-       
-    }
-    
-//    NSData *jsonData=[NSJSONSerialization dataWithJSONObject:mDict options:NSJSONWritingPrettyPrinted error:nil];
-    NSString *jsonStr=[mDict JSONString];
-    NSLog(@"jsonStr=%@",jsonStr);
-    return mDict;
-}
 @end
 @implementation NSDate (Addition)
 +(NSString *)dateFromString:(NSString *)string withFormat:(NSString *)format{
