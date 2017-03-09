@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
    常用类库，包括UIView  UIImage等
                    DESC
 
-  s.homepage     = "https://github.com/lgxemperor/MyPrivateLibrary"
+  s.homepage     = "http://www.liziqun.com/"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -53,7 +53,7 @@ Pod::Spec.new do |s|
   #  profile URL.
   #
 
-  s.author             = { "emperor" => "junxun_lgx@qq.com" }
+  s.author             = { "emperor" => "huangdili2006@126.com" }
   # Or just: s.author    = "emperor"
   # s.authors            = { "emperor" => "junxun_lgx@qq.com" }
   # s.social_media_url   = "http://twitter.com/emperor"
@@ -131,9 +131,9 @@ Pod::Spec.new do |s|
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
-  # s.requires_arc = true
+   s.requires_arc = true
 
-  # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
+   s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"
   s.dependency 'pop', '~> 1.0.9'
   s.dependency "MBProgressHUD", "~> 0.9.1"
