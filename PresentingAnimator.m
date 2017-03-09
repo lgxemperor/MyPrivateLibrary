@@ -9,7 +9,7 @@
 #import "PresentingAnimator.h"
 #import "UIColor+CustomColors.h"
 #import "POP.h"
-
+#define SCREENSIZE [UIScreen mainScreen].bounds.size
 @implementation PresentingAnimator
 
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext
